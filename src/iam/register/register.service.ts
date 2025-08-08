@@ -32,7 +32,7 @@ export class RegisterService {
     try {
       await this.mailerService.sendMail({
         to: user.email,
-        from: 'from@example.com',
+        from: 'Vargen Assistant <vargen@vargen.divinations.top>',
         subject: 'Registration successful ✔',
         html: registrationEmail(user),
       });

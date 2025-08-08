@@ -42,7 +42,7 @@ export class ForgotPasswordService {
     try {
       await this.mailerService.sendMail({
         to: email,
-        from: 'from@example.com',
+        from: 'Vargen Assistant <vargen@vargen.divinations.top>',
         subject: 'Forgot Password successful ✔',
         text: 'Forgot Password successful!',
         html: forgotPasswordEmail(password),

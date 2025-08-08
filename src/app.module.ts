@@ -4,16 +4,17 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { IamModule } from './iam/iam.module';
+import { OpenaiModule } from './openai/openai.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
-        type: 'mysql',
+        type: 'postgres',
         host: process.env.TYPEORM_HOST,
         port: process.env.TYPEORM_PORT
           ? parseInt(process.env.TYPEORM_PORT, 10)
-          : 3306,
+          : 5432,
         username: process.env.TYPEORM_USERNAME,
         password: process.env.TYPEORM_PASSWORD,
         database: process.env.TYPEORM_DATABASE,
@@ -29,6 +30,7 @@ import { IamModule } from './iam/iam.module';
     }),
     IamModule,
     UsersModule,
+    OpenaiModule,
   ],
   controllers: [AppController],
   providers: [AppService],
