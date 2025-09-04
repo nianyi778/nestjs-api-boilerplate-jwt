@@ -18,6 +18,8 @@ import { OpenaiModule } from './openai/openai.module';
         username: process.env.TYPEORM_USERNAME,
         password: process.env.TYPEORM_PASSWORD,
         database: process.env.TYPEORM_DATABASE,
+        ssl: { rejectUnauthorized: false }, // 或 ssl: true（老版本）
+        autoLoadEntities: true,
         synchronize: true,
         entities: [__dirname + '/**/*.{model,entity}.{ts,js}'],
         migrations: ['dist/migrations/**/*.js'],
