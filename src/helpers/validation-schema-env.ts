@@ -33,12 +33,13 @@ interface EnvVariables {
 export const validateSchemaEnv = (env: unknown) => {
   const valid = validate(env);
   if (!valid) {
-    const errorMessages = validate.errors
+    const errorMessages =
+      validate.errors
         ?.map(
           (err: { instancePath?: string; message?: string }) =>
             `- ${err.instancePath || ''} ${err.message || 'Unknown error'}`,
         )
-       .join('\n') ?? 'Unknown error';
+        .join('\n') ?? 'Unknown error';
     console.error(`Environment validation error: \n${errorMessages}`);
   }
   return env as EnvVariables;

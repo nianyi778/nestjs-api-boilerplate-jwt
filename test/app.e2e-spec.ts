@@ -21,8 +21,8 @@ describe('App (e2e)', () => {
       .useValue({ canActivate: () => true })
       .compile();
 
-  app = moduleFixture.createNestApplication<NestFastifyApplication>(
-      new FastifyAdapter()
+    app = moduleFixture.createNestApplication<NestFastifyApplication>(
+      new FastifyAdapter(),
     );
     app.setGlobalPrefix('api');
     app.useGlobalPipes(

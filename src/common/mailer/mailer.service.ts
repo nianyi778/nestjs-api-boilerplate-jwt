@@ -15,7 +15,7 @@ export class MailerService {
         pass: process.env.EMAIL_AUTH_PASSWORD,
       },
       debug: process.env.EMAIL_DEBUG === 'true',
-      logger: false,
+      logger: process.env.EMAIL_LOGGER === 'true',
     });
   }
 

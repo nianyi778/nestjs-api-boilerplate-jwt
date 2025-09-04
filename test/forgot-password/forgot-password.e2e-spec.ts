@@ -39,7 +39,7 @@ describe('App (e2e)', () => {
       .compile();
 
     app = moduleFixture.createNestApplication<NestFastifyApplication>(
-      new FastifyAdapter()
+      new FastifyAdapter(),
     );
     app.setGlobalPrefix('api');
     app.useGlobalPipes(
