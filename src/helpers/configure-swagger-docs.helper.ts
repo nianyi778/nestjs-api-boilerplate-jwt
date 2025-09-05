@@ -3,11 +3,17 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 export function configureSwaggerDocs(app: INestApplication) {
   if (process.env.NODE_ENV !== 'production') {
+    const serverUrl = process.env.SWAGGER_SERVER_URL || '/';
+
     const config = new DocumentBuilder()
       .setTitle('API')
       .setDescription('The API description')
       .setVersion('1.0')
-      .addServer('http://localhost:3000', 'Local server')
+      // Use relative current host by default to avoid hardcoding localhost
+      .addServer(
+        serverUrl,
+        serverUrl === '/' ? 'Current host' : 'Configured server',
+      )
       .addTag('auth', 'API by authentication')
       .addTag('users', 'API by users management')
       .addTag('app', 'API of example ( resources protected and public ) ')
